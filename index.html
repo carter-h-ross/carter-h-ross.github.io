@@ -13,7 +13,7 @@
 
     <body>  
 
-<!------------------------------------------------------------------- nav bar --------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------- nav bar -------------------------------------------------------------------------------------------------------->
 
         <nav class = "nav">
             <a href = "./" id = "home_link" class = "a">
@@ -47,7 +47,7 @@
               
         </div>
 
-<!---------------------------------------------------------------- javascript --------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------- javascript ------------------------------------------------------------------------------------------------------->
         
         <script>
 
@@ -71,7 +71,7 @@
             function showContent(type) {
                 if (type === 'Basic') {
                     document.getElementById('content').innerHTML = 
-                        "<h1> $5 </h1>\
+                        "<h1> Basic $5 </h1>\
                         <p>\
                             this plan includes:<br>\
                             ☑ program that allows input from the user<br>\
@@ -82,7 +82,7 @@
                     ;
                 } else if (type === 'Regular') {
                     document.getElementById('content').innerHTML = 
-                        "<h1> $10 </h1>\
+                        "<h1> Regular $10 </h1>\
                         <p>\
                             this plan includes:<br>\
                             ☑ program that allows input from the user<br>\
@@ -93,7 +93,7 @@
                     ;
                 } else if (type === 'Advanced') {
                     document.getElementById('content').innerHTML = 
-                        "<h1> $25 </h1>\
+                        "<h1> Advanced $25 </h1>\
                         <p>\
                             this plan includes:<br>\
                             ☑ program that allows input from the user<br>\
@@ -104,7 +104,7 @@
                     ;
                 } else if (type === 'Premium') {
                     document.getElementById('content').innerHTML = 
-                        "<h1> $75 </h1>\
+                        "<h1> Premium $75 </h1>\
                         <p>\
                             this plan includes:<br>\
                             ☑ program that allows input from the user<br>\
@@ -114,12 +114,13 @@
                         </p>"
                     ;
                 }
-            }
-              
+            }              
+
+            window.onload = showContent("Basic")
 
         </script>
 
-<!-------------------------------------------------------------------- css of the website --------------------------------------------------------------------->
+<!------------------------------------------------------------------------------ css of the website -------------------------------------------------------------------------------------------------->
         <style>
             div{
                 text-align: center;
