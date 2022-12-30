@@ -30,16 +30,24 @@
 
 <!------------------------------------------------------------------------------- project choices ---------------------------------------------------------------------------------------------------->  
 
-        <div id="navbar" class = "opnav parent">
-            <a href="#" onclick="showContent('Basic'); updateEmail(python_basic_email);" class = "option div1">Basic</a>
-            <a href="#" onclick="showContent('Regular'); updateEmail(python_regular_email);" class = "option div2">Regular</a>
-            <a href="#" onclick="showContent('Advanced'); updateEmail(python_advanced_email);" class = "option div3">Advanced</a>
-            <a href="#" onclick="showContent('Premium'); updateEmail(python_premium_email);" class = "option div4">Premium</a>
+        <div class = "lang_choices parent1">
+            <a href="#" onclick = "updateLang('Python'); lang = 'Python';" class = "option lang_div1">Python</a>
+            <a href="#" onclick= "updateLang('Java'); lang = 'Java';" class = "option lang_div2">Java</a>
         </div>
 
-        <div class = "plans">       
+        <div id="navbar" class = "opnav parent2">
+            <a href="#" onclick="showContent('Basic'); updateEmail(basic_email); " class = "option div1">Basic</a>
+            <a href="#" onclick="showContent('Regular'); updateEmail(regular_email);" class = "option div2">Regular</a>
+            <a href="#" onclick="showContent('Advanced'); updateEmail(advanced_email);" class = "option div3">Advanced</a>
+            <a href="#" onclick="showContent('Premium'); updateEmail(premium_email);" class = "option div4">Premium</a>
+        </div>
+
+        <div class = "plans">
+            <div id = "lang">
+                <!---language goes here--->
+            </div>       
             <div id="content">
-                select a plan
+                select a plan and a language
             </div>
         </div>
 
@@ -51,10 +59,11 @@
 <!--------------------------------------------------------------------------------- javascript ------------------------------------------------------------------------------------------------------->
         
         <script>
-            let python_basic_email = "‣ language: Python\n‣ plan: Basic $5\n‣ order description: 'enter description here'"
-            let python_regular_email = "‣ language: Python\n‣ plan: Regular $10\n‣ order description: 'enter description here'"
-            let python_advanced_email = "‣ language: Python\n‣ plan: Advanced $25\n‣ order description: 'enter description here'"
-            let python_premium_email = "‣ language: Python\n‣ plan: Premium $75\n‣ order description: 'enter description here'"
+            lang = ""
+            let basic_email = `‣ language:\n‣ plan: Basic $5\n‣ order description: 'enter description here'`
+            let regular_email = `‣ language:\n‣ plan: Regular $10\n‣ order description: 'enter description here'`
+            let advanced_email = `‣ language:\n‣ plan: Advanced $25\n‣ order description: 'enter description here'`
+            let premium_email = `‣ language:\n‣ plan: Premium $75\n‣ order description: 'enter description here'`
 
             function vh(percent) {
                 let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -78,15 +87,25 @@
                 document.getElementById("email-link").href = "mailto:carter.h.ross.5176@gmail.com?subject=New Order&body=" + encodeURIComponent(text);
             }
 
+            function updateLang(lang_update) {
+                basic_email = `‣ language: ${lang_update}\n‣ plan: Basic $5\n‣ order description: 'enter description here'`
+                regular_email = `‣ language: ${lang_update}\n‣ plan: Regular $10\n‣ order description: 'enter description here'`
+                advanced_email = `‣ language: ${lang_update}\n‣ plan: Advanced $25\n‣ order description: 'enter description here'`
+                premium_email = `‣ language: ${lang_update}\n‣ plan: Premium $75\n‣ order description: 'enter description here'`
+                let langhtml = document.getElementById("lang");
+                langhtml.innerHTML = `<h1>${lang_update}</h1>`;
+            } 
+
             function showContent(type) {
                 if (type === 'Basic') {
+                    console.log("type basic")
                     document.getElementById('content').innerHTML = 
                         "<h1> Basic $5 </h1>\
                         <p>\
                             this plan includes:<br>\
                             ☑ program that allows input from the user<br>\
                             ☐ savable program progress<br>\
-                            ☐ tkinter GUI<br>\
+                            ☐ GUI<br>\
                             ☐ video tutorial on how to make program<br>\
                         </p>"
                     ;
@@ -97,7 +116,7 @@
                             this plan includes:<br>\
                             ☑ program that allows input from the user<br>\
                             ☑ savable program progress<br>\
-                            ☐ tkinter GUI<br>\
+                            ☐ GUI<br>\
                             ☐ video tutorial on how to make program<br>\
                         </p>"
                     ;
@@ -108,7 +127,7 @@
                             this plan includes:<br>\
                             ☑ program that allows input from the user<br>\
                             ☑ savable program progress<br>\
-                            ☑ tkinter GUI<br>\
+                            ☑ GUI<br>\
                             ☐ video tutorial on how to make program<br>\
                         </p>"
                     ;
@@ -119,7 +138,7 @@
                             this plan includes:<br>\
                             ☑ program that allows input from the user<br>\
                             ☑ savable program progress<br>\
-                            ☑ tkinter GUI<br>\
+                            ☑ GUI<br>\
                             ☑ video tutorial on how to make program<br>\
                         </p>"
                     ;
@@ -145,11 +164,22 @@
             h1 {
                 font-size: 2.5vw;
             }
-            .opnav {
-                margin-left: 30%;
-                margin-right: 30%;
+            .lang_choices {
+                margin-left: 20%;
+                margin-right: 20%;
+                border-top: 2px solid #bababa;
+                border-left: 2px solid #bababa;
+                border-right: 2px solid #bababa;
                 border-top-left-radius: 16px;
                 border-top-right-radius: 16px;
+                background: rgba(255, 255, 255, 0.62);
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(2.4px);
+                -webkit-backdrop-filter: blur(2.4px);
+            }
+            .opnav {
+                margin-left: 20%;
+                margin-right: 20%;
                 border-top: 2px solid #bababa;
                 border-left: 2px solid #bababa;
                 border-right: 2px solid #bababa;
@@ -167,8 +197,8 @@
                 backdrop-filter: blur(2.4px);
                 -webkit-backdrop-filter: blur(2.4px);
                 border: 2px solid #bababa;
-                margin-right: 30%;
-                margin-left: 30%;
+                margin-right: 20%;
+                margin-left: 20%;
                 color: #34495e;
             }
             .option {
@@ -177,7 +207,14 @@
                 text-align: center;
                 font-size: 1.8vw;
             }
-            .parent {
+            .parent1 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: 1fr;
+                grid-column-gap: 0px;
+                grid-row-gap: 0px;
+            }
+            .parent2 {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: 1fr;
@@ -188,6 +225,8 @@
             .div2 { grid-area: 1 / 2 / 2 / 3; border-right: 2px solid #bababa;}
             .div3 { grid-area: 1 / 3 / 2 / 4; border-right: 2px solid #bababa;}
             .div4 { grid-area: 1 / 4 / 2 / 5; }
+            .lang_div1 { grid-area: 1 / 1 / 2 / 2; border-right: 2px solid #bababa;}
+            .lang_div2 { grid-area: 1 / 2 / 2 / 3; }
             .nav {
                 margin: 0px auto 0;
                 margin-bottom: 2vw;
