@@ -28,35 +28,45 @@
             <div class="animation start-home"></div>
         </nav>
 
-<!------------------------------------------------------------------------------- project choices ---------------------------------------------------------------------------------------------------->  
+<!------------------------------------------------------------------------------- project choices ------------------------------------------------------------->  
+        <div class="angry-grid">
+            <div id = "item-0">
+                <div class = "lang_choices parent1">
+                    <a href="#" onclick = "updateLang('Python'); lang = 'Python';" class = "option lang_div1">Python</a>
+                    <a href="#" onclick= "updateLang('Java'); lang = 'Java';" class = "option lang_div2">Java</a>
+                </div>
 
-        <div class = "lang_choices parent1">
-            <a href="#" onclick = "updateLang('Python'); lang = 'Python';" class = "option lang_div1">Python</a>
-            <a href="#" onclick= "updateLang('Java'); lang = 'Java';" class = "option lang_div2">Java</a>
-        </div>
+                <div id="navbar" class = "opnav parent2">
+                    <a href="#" onclick="showContent('Basic'); updateEmail(basic_email); " class = "option div1">Basic</a>
+                    <a href="#" onclick="showContent('Regular'); updateEmail(regular_email);" class = "option div2">Regular</a>
+                    <a href="#" onclick="showContent('Advanced'); updateEmail(advanced_email);" class = "option div3">Advanced</a>
+                    <a href="#" onclick="showContent('Premium'); updateEmail(premium_email);" class = "option div4">Premium</a>
+                </div>
 
-        <div id="navbar" class = "opnav parent2">
-            <a href="#" onclick="showContent('Basic'); updateEmail(basic_email); " class = "option div1">Basic</a>
-            <a href="#" onclick="showContent('Regular'); updateEmail(regular_email);" class = "option div2">Regular</a>
-            <a href="#" onclick="showContent('Advanced'); updateEmail(advanced_email);" class = "option div3">Advanced</a>
-            <a href="#" onclick="showContent('Premium'); updateEmail(premium_email);" class = "option div4">Premium</a>
-        </div>
-
-        <div class = "plans">
-            <div id = "lang">
-                <!---language goes here--->
-            </div>       
-            <div id="content">
-                select a plan and a language
+                <div class = "plans">
+                    <div id = "lang">
+                        <!---language goes here--->
+                    </div>       
+                    <div id="content">
+                        select a plan and a language
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <a id = "email-link" href="mailto:carter.h.ross.5176@gmail.com?subject=Email%20Subject&body=Email%20body%20text" target = "_blank">
-            <button>Email Button</button>
-        </a>
+            <div id = "item-1">
+                <button href = "" class = "youtube">Youtube Channel</button>
+            </div>
+            
+            <div id = "item-4">
+                <a id = "email-link" href="mailto:carter.h.ross.5176@gmail.com?subject=Email%20Subject&body=Email%20body%20text" target = "_blank">
+                    <button>Email Button</button>
+                </a>
+            </div>
+
+        </div>
           
 
-<!--------------------------------------------------------------------------------- javascript ------------------------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------- javascript ---------------------------------------------------------------->
         
         <script>
             lang = ""
@@ -164,9 +174,85 @@
             h1 {
                 font-size: 2.5vw;
             }
+            .youtube {
+                background: #F63D3D;
+                background-image: -webkit-linear-gradient(top, #F63D3D, #AF0000);
+                background-image: -moz-linear-gradient(top, #F63D3D, #AF0000);
+                background-image: -ms-linear-gradient(top, #F63D3D, #AF0000);
+                background-image: -o-linear-gradient(top, #F63D3D, #AF0000);
+                background-image: -webkit-gradient(to bottom, #F63D3D, #AF0000);
+                -webkit-border-radius: 16px;
+                -moz-border-radius: 16px;
+                border-radius: 16px;
+                color: #FFFFFF;
+                font-family: Arial;
+                font-size: 3vw;
+                font-weight: 10vw;
+                height: 5vw;
+                width: 80%;
+                -webkit-box-shadow: 1px 1px 2vw 0 #DD380D;
+                -moz-box-shadow: 1px 1px 2vw 0 #DD380D;
+                box-shadow: 1px 1px 2vw 0 #DD380D;
+                text-shadow: 1px 1px 2vw #000000;
+                border: solid #DD380D 0;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                text-align: center;
+            }
+            .youtube:hover {
+                border: solid #DD380D 0;
+                background: #AF0000;
+                background-image: -webkit-linear-gradient(top, #AF0000, #F63D3D);
+                background-image: -moz-linear-gradient(top, #AF0000, #F63D3D);
+                background-image: -ms-linear-gradient(top, #AF0000, #F63D3D);
+                background-image: -o-linear-gradient(top, #AF0000, #F63D3D);
+                background-image: -webkit-gradient(to bottom, #AF0000, #F63D3D);
+                -webkit-border-radius: 16px;
+                -moz-border-radius: 16px;
+                border-radius: 16px;
+                text-decoration: none;
+            }
+            .angry-grid {
+                display: grid;  
+                grid-template-rows: 1fr 1fr 1fr 1fr;
+                grid-template-columns: 1fr 1fr;   
+                gap: 10px;
+                height: 100%; 
+            }
+            #item-0 {            
+                grid-row-start: 1;
+                grid-column-start: 1;            
+                grid-row-end: 4;
+                grid-column-end: 2;                
+            }
+            #item-1 {           
+                grid-row-start: 1;
+                grid-column-start: 2;             
+                grid-row-end: 2;
+                grid-column-end: 3;              
+            }
+            #item-2 {             
+                grid-row-start: 2;
+                grid-column-start: 2;             
+                grid-row-end: 3;
+                grid-column-end: 3; 
+            }
+            #item-3 {
+                grid-row-start: 3;
+                grid-column-start: 2;
+                grid-row-end: 4;
+                grid-column-end: 3;
+            }
+            #item-4 {
+                grid-row-start: 4;
+                grid-column-start: 1;
+                grid-row-end: 5;
+                grid-column-end: 3;  
+             }
             .lang_choices {
-                margin-left: 20%;
-                margin-right: 20%;
+                margin-left: 0%;
+                margin-right: 0%;
                 border-top: 2px solid #bababa;
                 border-left: 2px solid #bababa;
                 border-right: 2px solid #bababa;
@@ -178,8 +264,8 @@
                 -webkit-backdrop-filter: blur(2.4px);
             }
             .opnav {
-                margin-left: 20%;
-                margin-right: 20%;
+                margin-left: 0%;
+                margin-right: 0%;
                 border-top: 2px solid #bababa;
                 border-left: 2px solid #bababa;
                 border-right: 2px solid #bababa;
@@ -197,8 +283,8 @@
                 backdrop-filter: blur(2.4px);
                 -webkit-backdrop-filter: blur(2.4px);
                 border: 2px solid #bababa;
-                margin-right: 20%;
-                margin-left: 20%;
+                margin-right: 0%;
+                margin-left: 0%;
                 color: #34495e;
             }
             .option {
