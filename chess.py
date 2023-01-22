@@ -2,20 +2,33 @@ import numpy as np
 import tkinter as tk
 import random as ran
 
+"""
+
+bugs to fix:
+ * black pawn did not turn into queen
+ * black kinght turned into queen
+ * moving a piece to block the check does not remove red square
+    
+"""
+
+# highlights the board spaces sent into function
 def highlight(moves):
     global board
     for cord in moves:
         board[cord[0],cord[1]].button["bg"] = colors["y"]
         
+# removes the highlighted squares
 def reset(op=""):
     for r in range(8):
         for c in range(8):
             if "k" not in board[r,c].piece:
                 board[r,c].button["bg"] = board[r,c].color
-            
+
+# puts are red squre on the spot
 def check(r,c):
     board[r,c].button["bg"] = colors["r"]
             
+# looks for check in board spot sent into the function
 def is_check(r,c,t,o,team):
     
     # checks if black pawns will make a check if team is white
@@ -548,10 +561,16 @@ opp = {
 }
 
 colors = {
-    "w" : "#FFFFFF",
-    "b" : "#964B00",
-    "y" : "#FFFF00",
-    "r" : "#FF0000"
+    "w" : "#FFFFFF", # white
+    "b" : "#964B00", # brown
+    "y" : "#FFFF00", # yellow
+    "r" : "#FF0000"  # red
+}
+
+# location of 2 kings
+kings = {
+    "x" : [7,3],
+    "y" : [0,3]
 }
 
 window = tk.Tk()
@@ -559,7 +578,6 @@ mode = "unselected"
 selected_r, selected_c = 0,0
 turn = "x"
 checked = False
-bot = True
 
 board = np.array([
     [spot(0,0,"yr","w"),spot(0,1,"yn","b"),spot(0,2,"yb","w"),spot(0,3,"yk","b"),spot(0,4,"yq","w"),spot(0,5,"yb","b"),spot(0,6,"yn","w"),spot(0,7,"yr","b")],

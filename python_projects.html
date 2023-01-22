@@ -279,6 +279,46 @@
                     </p>
                 </div>
 
+                <!------------------------------------------------------------ minesweeper3d ------------------------------------------------------------------>
+
+                <div class = "reveal div22 l">
+                    <h1>
+                        Chess
+                    </h1>
+                    <p>
+                        Chess is a two-player strategy game played on a checkered board. Each player starts with 16 pieces: 
+                        one king, one queen, two rooks, two knights, two bishops, and eight pawns. 
+                        The goal of the game is to checkmate the opponent's king, 
+                        which means to put the king in a position where it is under attack and cannot escape capture. 
+                        The player with the white pieces moves first, and then players alternate turns. 
+                        The pawns can only move forward, but capture diagonally. The rooks move horizontally or vertically, 
+                        the knights move in an L-shape, the bishops move diagonally, the queen can move in any direction along a straight line, 
+                        and the king can move one square in any direction. The knight is the only piece that can "jump" over other pieces. 
+                        When a pawn reaches the opposite end of the board, it will be promoted to a queen. 
+                        click any piece on the board when it is your turn, 
+                        and the board willl be highleted to show where you can move the pice you selected.
+                        if the space with the king in it is red, then your are in check and must move your king out of check.
+                    </p>
+                </div>
+                <div class = "reveal div23">
+                    <img src = "chess_game_image.jpeg" alt = "image of chess game made using python" class = "previews">
+                    <a href="chess.py" style="text-decoration: none" download class="download-button">
+                        Download code
+                    </a>
+                </div>
+                <div class = "reveal div24 r">
+                    <h1>
+                        How it works
+                    </h1>
+                    <p>
+                        this program uses the modules: numpy and tkinter.
+                        the tkinter module is use to craete the window taht has the buttons you can press.
+                        when you press a button with one of the pices on it the program will look for all of the moves
+                        that the piece can make based of the rules for chess. 
+                        the numpy module is used to create a class with the attribute of each of the spots on the board.
+                    </p>
+                </div>
+
             </div>
 
         </div>
@@ -349,6 +389,9 @@
             .div19 { grid-area: 7 / 1 / 8 / 2; }
             .div20 { grid-area: 7 / 2 / 8 / 3; }
             .div21 { grid-area: 7 / 3 / 8 / 4; }
+            .div22 { grid-area: 8 / 1 / 9 / 2; }
+            .div23 { grid-area: 8 / 2 / 9 / 3; }
+            .div24 { grid-area: 8 / 3 / 9 / 4; }
             .parent {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);

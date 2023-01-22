@@ -10,7 +10,6 @@ flagsPlaced = 0
 displayText = ""
 win = False
 
-import numpy
 import numpy as np
 import random
 import tkinter as tk

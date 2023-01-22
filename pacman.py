@@ -5,9 +5,7 @@ Created on Tue Dec 13 03:42:58 2022
 @author: Carter
 """
 
-import numpy 
 import numpy as np
-import tkinter
 import tkinter as tk
 import heapq
 import random
@@ -37,7 +35,7 @@ pacNums = {
 def heuristic(a, b):
     return np.sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2)
 
-def astar(array, start, goal):
+def pathfind_ghost(array, start, goal):
     global difficulty
     neighbors = [(0,1),(0,-1),(1,0),(-1,0)]
     close_set = set()
@@ -156,7 +154,7 @@ def drawBoard():
            
 def nextMove(ghostR, ghostC, op=""):
     global board, avoidLst, route
-    route = astar(board, (playerR,playerC),(ghostR,ghostC))
+    route = pathfind_ghost(board, (playerR,playerC),(ghostR,ghostC))
     if len(route) > 1 and difficulty != 2:
         return route[1]
     elif difficulty > 1: 

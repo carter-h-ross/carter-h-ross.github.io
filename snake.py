@@ -9,7 +9,6 @@ Created on Wed Nov 16 16:44:25 2022
 
 import numpy as np
 import tkinter as tk
-import tkinter
 import random
 
 #--------------------------- classes ------------------------------------------
