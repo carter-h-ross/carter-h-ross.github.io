@@ -1,14 +1,11 @@
 import numpy as np
 import tkinter as tk
-import random as ran
 
 """
-
 bugs to fix:
  * black pawn did not turn into queen
  * black kinght turned into queen
  * moving a piece to block the check does not remove red square
-    
 """
 
 # highlights the board spaces sent into function
