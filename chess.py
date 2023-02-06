@@ -6,6 +6,7 @@ bugs to fix:
  * black pawn did not turn into queen
  * black kinght turned into queen
  * moving a piece to block the check does not remove red square
+ * queen can check through pawns
 """
 
 # highlights the board spaces sent into function
@@ -24,6 +25,9 @@ def reset(op=""):
 # puts are red squre on the spot
 def check(r,c):
     board[r,c].button["bg"] = colors["r"]
+    
+def uncheck(r,c):
+    board[r,c].button["bg"] = colors[board[r,c].default]
             
 # looks for check in board spot sent into the function
 def is_check(r,c,t,o,team):
@@ -232,7 +236,7 @@ class spot:
         self.button.grid(row = self.r, column = self.c)      
         
     def pressed(self, op = ""):
-        global mode, selected_r, selected_c, turn
+        global mode, selected_r, selected_c, turn                          
         
         if mode == "unselected" and self.team == turn:                    
             
@@ -521,11 +525,6 @@ class spot:
                     board[selected_r,selected_c].piece = f"{turn}q"
                 board[self.r,self.c] = spot(self.r,self.c,board[selected_r,selected_c].piece,self.default)
                 board[selected_r,selected_c] = spot(selected_r,selected_c,"-=",board[selected_r,selected_c].default)   
-                for r in range(8):
-                    for c in range(8):
-                        if board[r,c].piece == f"{opp[turn]}k":
-                            if is_check(r,c,"-",turn,opp[turn]):
-                                check(r,c)
                 
                 if turn == "x":
                     turn = "y"
@@ -534,7 +533,19 @@ class spot:
 
             reset()
             mode = "unselected"
-            
+        
+        for r in range(8):
+            for c in range(8):
+                if "xk" in board[r,c].piece:
+                    if is_check(r,c,"-","y","x"):
+                        check(r,c)
+                    else:
+                        uncheck(r,c)
+                elif "yk" in board[r,c].piece:
+                    if is_check(r,c,"-","x","y"):
+                        check(r,c)
+                    else:
+                        uncheck(r,c)            
             
 images = {
     "yr" : "♜",

@@ -37,11 +37,41 @@
         <div>    
 
             <div class = "scorllable-container parent" >
-                <div class = "div5 c">
+
+                <div class = "reveal div1 l">
                     <h1>
-                        Programs coming soon
+                        New Language
                     </h1>
+                    <p>
+                        This program is a new programming language i made that is not meant for programming projects 
+                        that will be used in the console. this programming language only uses 9 charachters 
+                        and the numbers 0-9. the program show in the picture is a program that prints "hello world!". 
+                    </p>
                 </div>
+                <div class = "reveal div2">
+                    <img src = "NewLanguage.jpeg" alt = "image of hello world programm in this new language" class = "previews">
+                    <a href="NewLanguage.java" style="text-decoration: none" download class="download-button">
+                        Download code
+                    </a>
+                </div>
+                <div class = "reveal div3 r">
+                    <h1>
+                        How it works
+                    </h1>
+                    <p>
+                        this program is an interpriter for a language with the following commands:
+                        <li>&gt; : move memory pointer up one spot</li>
+                        <li>&lt; : move memory pointer down one spot</li>
+                        <li> +  : add one to the value of the memory loc</li>
+                        <li> -  : subtract one from the value of the memory loc</li>
+                        <li> =  : switch between int and String mode</li>
+                        <li> ?  : ask for input from the user</li>
+                        <li> ^  : output the value of the current memory loc</li>
+                        <li> .  : go to a new line for the output</li>
+                        <li> |x|  : repeat the previous action x times</li>
+                    </p>
+                </div>
+                
             </div>
 
         </div>
@@ -49,6 +79,7 @@
 <!---------------------------------------------------------------- javascript --------------------------------------------------------------------------------->
         
         <script>
+
             function vh(percent) {
                 let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
                 return (percent * h) / 100;
@@ -83,6 +114,9 @@
             
             window.addEventListener("scroll", reveal);
             window.addEventListener("resize", reveal);
+            window.onload = (event) => {
+                reveal()
+            }
             
         </script>
 
@@ -157,7 +191,7 @@
             .l {
                 text-align: center;
                 font-family: Arial;
-                color: #336699;
+                color: #043566;
                 font-size: 1.2vw;
             }
             .r {
@@ -177,6 +211,9 @@
                 background-attachment: fixed;
                 margin-left: 4vw;
                 margin-right: 4vw;
+            }
+            li {
+                text-align: left;
             }
             nav {
                 margin: 0px auto 0;
