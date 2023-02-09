@@ -5,4 +5,4 @@ this is the code for the website i use to showcase the projects i have made and 
 1. Python : 4271 lines
 2. HTML, CSS, JavaScript: 1243 lines
 3. Java : 305 lines
-* total lines : 5,189 lines
+* total lines : 5,819 lines
