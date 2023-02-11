@@ -175,6 +175,7 @@ class NewLanguage {
                 default:
                     error(coms[i], "illegal charachter", i);
                     break;
+                    
             }
         }
 
