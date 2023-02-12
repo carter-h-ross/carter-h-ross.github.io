@@ -5,19 +5,7 @@ class NewLanguage {
     public static void main(String[] args) {
         String program = """
 
-        +|72|
-        >+|101|
-        >+|108|
-        >+|108|
-        >+|111|
-        >+|32|
-        >+|119|
-        >+|111|
-        >+|114|
-        >+|108|
-        >+|100|
-        >+|33|
-        <|11|^|12|
+        
       
         """.replaceAll("\\s+","");
         int memorySize = 20;
@@ -26,7 +14,7 @@ class NewLanguage {
 
     private static void run(String code,int size) {
 
-        boolean debug = false;
+        boolean debug = true;
         int[] mem = new int [size];
         String[] str = new String [size];
         int loc = 0;
@@ -35,21 +23,60 @@ class NewLanguage {
         String mode = "int";
         char[] coms = code.toCharArray();
         Scanner input = new Scanner(System.in);
+        int reps = 0;
+        int repLoc = 0;
+        boolean repPlaced = false;
+        int loopRep = 0;
         
         for (int i = 0;i < coms.length;i++) {
             rep = 0;
             repStr = "";
             switch (coms[i]) {
 
+                // end program
+                case '!':
+                    break;
+
+                // loks for repeating symbol '~'
+                case '~':
+                    if (!(repPlaced)) {
+                        repLoc = i;
+                        repPlaced = true;
+                        loopRep = 0;
+                    } else {
+                        if (reps == 0) {
+                            for(int j = 2;j < coms.length;j++) {
+                                if (Character.isDigit(coms[j + i])) {
+                                    repStr += coms[j + i];
+                                } else {
+                                    break;
+                                }
+                            }
+                            loopRep = Integer.parseInt(repStr);
+                        }
+                        if (reps < loopRep) {
+                            i = repLoc;
+                            reps++;
+                        } else {
+                            i += 4;
+                            repPlaced = false;
+                        }
+                    }
+                    break;
+
                 // moving memory pointer forward
                 case '>':
-                    if (coms[i + 1] == '|') {
+                    if (coms[i + 1] == '|' || coms[i + 1] == ':') {
                         i += 2;
-                        while (coms[i] != '|') {
+                        while (coms[i] != '|' && coms[i] != ':') {
                             repStr += coms[i];
                             i++; // add to initial loop
                         }
-                        rep = Integer.parseInt(repStr);
+                        if (coms[i] == '|') {
+                            rep = Integer.parseInt(repStr);
+                        } else {
+                            rep = mem[Integer.parseInt(repStr)];
+                        }
                         if (loc + rep < size) {
                             loc += rep;
                         } else {
@@ -65,13 +92,17 @@ class NewLanguage {
                     break;
                 
                 case '<':
-                    if (coms[i + 1] == '|') {
+                    if (coms[i + 1] == '|' || coms[i + 1] == ':') {
                         i += 2;
-                        while (coms[i] != '|') {
+                        while (coms[i] != '|' && coms[i] != ':') {
                             repStr += coms[i];
                             i++; // add to initial loop
                         }
-                        rep = Integer.parseInt(repStr);
+                        if (coms[i] == '|') {
+                            rep = Integer.parseInt(repStr);
+                        } else {
+                            rep = mem[Integer.parseInt(repStr)];
+                        }
                         if (loc - rep > -1) {
                             loc -= rep;
                         } else {
@@ -88,13 +119,17 @@ class NewLanguage {
 
                 case '+':
                     if (mode == "int") {
-                        if (coms[i + 1] == '|') {
+                        if (coms[i + 1] == '|' || coms[i + 1] == ':') {
                             i += 2;
-                            while (coms[i] != '|') {
+                            while (coms[i] != '|' && coms[i] != ':') {
                                 repStr += coms[i];
                                 i++; // add to initial loop
                             }
-                            rep = Integer.parseInt(repStr);
+                            if (coms[i] == '|') {
+                                rep = Integer.parseInt(repStr);
+                            } else {
+                                rep = mem[Integer.parseInt(repStr)];
+                            }
                             mem[loc] += rep;
                         } else {
                             mem[loc]++;
@@ -106,13 +141,17 @@ class NewLanguage {
 
                 case '-':
                     if (mode == "int") {
-                        if (coms[i + 1] == '|') {
+                        if (coms[i + 1] == '|' || coms[i + 1] == ':') {
                             i += 2;
-                            while (coms[i] != '|') {
+                            while (coms[i] != '|' && coms[i] != ':') {
                                 repStr += coms[i];
                                 i++; // add to initial loop
                             }
-                            rep = Integer.parseInt(repStr);
+                            if (coms[i] == '|') {
+                                rep = Integer.parseInt(repStr);
+                            } else {
+                                rep = mem[Integer.parseInt(repStr)];
+                            }
                             mem[loc] -= rep;
                         } else {
                             mem[loc]--;
