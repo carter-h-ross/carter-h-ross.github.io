@@ -5,10 +5,71 @@ class NewLanguage {
     public static void main(String[] args) {
         String program = """
 
-        
+        >|10|
+        +|101|>
+        +|110|>
+        +|116|>
+        +|101|>
+        +|114|>
+        +|32|>
+        +|97|>
+        +|32|>
+        +|110|>
+        +|117|> 
+        +|109|> 
+        +|98|> 
+        +|101|> 
+        +|114|> 
+        +|32|> 
+        +|40|> 
+        +|49|>
+        +|45|> 
+        +|57|> 
+        +|41|> 
+        +|32|> 
+        +|116|> 
+        +|111|> 
+        +|32|> 
+        +|112|> 
+        +|108|> 
+        +|97|> 
+        +|99|>
+        +|101|> 
+        +|32|> 
+        +|97|> 
+        +|32|> 
+        +|112|> 
+        +|105|> 
+        +|101|> 
+        +|99|>
+        +|101|> 
+        +|58|>
+        +|124|> 
+        +|43|> 
+        +|45|
+        @10@
+        ^|38|
+        @0@
+        +|79|
+
+        ~
+            @0@
+            -|79|?
+            >:0:
+            +|88|
+
+            @1@^
+
+            @0@
+            -|88|?
+            >:0:
+            +|79|
+            
+        ~|4|
+        !
       
         """.replaceAll("\\s+","");
-        int memorySize = 20;
+        int memorySize = 64;
         run(program,memorySize);
     }
 
@@ -37,6 +98,16 @@ class NewLanguage {
                 case '!':
                     break;
 
+                // go to specific location in memeory 
+                case '@':
+                    i++;
+                    while (coms[i] != '@') {
+                        repStr += coms[i];
+                        i++; // add to initial loop
+                    }
+                    loc = Integer.parseInt(repStr);
+                    break;
+
                 // loks for repeating symbol '~'
                 case '~':
                     if (!(repPlaced)) {
@@ -58,7 +129,15 @@ class NewLanguage {
                             i = repLoc;
                             reps++;
                         } else {
-                            i += 4;
+                            int skips = 0;
+                            for(int j = 2;j < coms.length;j++) {
+                                if (Character.isDigit(coms[j + i])) {
+                                    skips ++;
+                                } else {
+                                    break;
+                                }
+                            }
+                            i += skips + 1;
                             repPlaced = false;
                         }
                     }
@@ -171,10 +250,8 @@ class NewLanguage {
 
                 case '?':
                     if (mode == "str") {
-                        System.out.println("enter a string");
                         str[loc] = input.nextLine();
                     } else {
-                        System.out.println("enter an integer");
                         mem[loc] = Integer.parseInt(input.nextLine());
                     }
                     break;
@@ -221,7 +298,7 @@ class NewLanguage {
         if (debug) {
             System.out.println("\n" + code + " | size: " + size + "\n");
             for (int i = 0;i < size;i++) {
-            System.out.println("mem[" + i + "] : " + mem[i]);
+            System.out.println("mem[" + i + "] : " + mem[i] + " : " + ((char) mem[i]));
             }
             for (int i = 0;i < size;i++) {
             System.out.println("str[" + i + "] : " + str[i]);
