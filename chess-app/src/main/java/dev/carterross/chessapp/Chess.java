@@ -37,55 +37,55 @@ public class Chess extends Application {
     public static Spot[][] board = {
             // row 0
             {new Spot('w',0,0,"br"),new Spot('b',0,1,"bn"),new Spot('w',0,2,"bb"),new Spot('b',0,3,"bk"),
-                    new Spot('w',0,4,"bq"),new Spot('b',0,5,"bb"),new Spot('w',0,6,"bn"),new Spot('b',0,7,"br")},
+             new Spot('w',0,4,"bq"),new Spot('b',0,5,"bb"),new Spot('w',0,6,"bn"),new Spot('b',0,7,"br")},
             // row 1
             {new Spot('b',1,0,"yp"),new Spot('w',1,1,"yp"),new Spot('b',1,2,"yp"),new Spot('w',1,3,"yp"),
-                    new Spot('b',1,4,"yp"),new Spot('w',1,5,"yp"),new Spot('b',1,6,"yp"),new Spot('w',1,7,"yp")},
+             new Spot('b',1,4,"yp"),new Spot('w',1,5,"yp"),new Spot('b',1,6,"yp"),new Spot('w',1,7,"yp")},
             // row 2
             {new Spot('w',2,0,"-="),new Spot('b',2,1,"-="),new Spot('w',2,2,"-="),new Spot('b',2,3,"-="),
-                    new Spot('w',2,4,"-="),new Spot('b',2,5,"-="),new Spot('w',2,6,"-="),new Spot('b',2,7,"-=")},
+             new Spot('w',2,4,"-="),new Spot('b',2,5,"-="),new Spot('w',2,6,"-="),new Spot('b',2,7,"-=")},
             // row 3
             {new Spot('b',3,0,"-="),new Spot('w',3,1,"-="),new Spot('b',3,2,"-="),new Spot('w',3,3,"-="),
-                    new Spot('b',3,4,"-="),new Spot('w',3,5,"-="),new Spot('b',3,6,"-="),new Spot('w',3,7,"-=")},
+             new Spot('b',3,4,"-="),new Spot('w',3,5,"-="),new Spot('b',3,6,"-="),new Spot('w',3,7,"-=")},
             // row 4
             {new Spot('w',4,0,"-="),new Spot('b',4,1,"-="),new Spot('w',4,2,"-="),new Spot('b',4,3,"-="),
-                    new Spot('w',4,4,"-="),new Spot('b',4,5,"-="),new Spot('w',4,6,"-="),new Spot('b',4,7,"-=")},
+             new Spot('w',4,4,"-="),new Spot('b',4,5,"-="),new Spot('w',4,6,"-="),new Spot('b',4,7,"-=")},
             // row 5
             {new Spot('b',5,0,"-="),new Spot('w',5,1,"-="),new Spot('b',5,2,"-="),new Spot('w',5,3,"-="),
-                    new Spot('b',5,4,"-="),new Spot('w',5,5,"-="),new Spot('b',5,6,"-="),new Spot('w',5,7,"-=")},
+             new Spot('b',5,4,"-="),new Spot('w',5,5,"-="),new Spot('b',5,6,"-="),new Spot('w',5,7,"-=")},
             // row 6
             {new Spot('w',6,0,"wp"),new Spot('b',6,1,"wp"),new Spot('w',6,2,"wp"),new Spot('b',6,3,"wp"),
-                    new Spot('w',6,4,"wp"),new Spot('b',6,5,"wp"),new Spot('w',6,6,"wp"),new Spot('b',6,7,"wp")},
+             new Spot('w',6,4,"wp"),new Spot('b',6,5,"wp"),new Spot('w',6,6,"wp"),new Spot('b',6,7,"wp")},
             // row 7
             {new Spot('b',7,0,"wr"),new Spot('w',7,1,"wn"),new Spot('b',7,2,"wb"),new Spot('w',7,3,"wq"),
-                    new Spot('b',7,4,"wk"),new Spot('w',7,5,"wb"),new Spot('b',7,6,"wn"),new Spot('w',7,7,"wr")}
+             new Spot('b',7,4,"wk"),new Spot('w',7,5,"wb"),new Spot('b',7,6,"wn"),new Spot('w',7,7,"wr")}
     };
 
     public static Spot[][] debugBoard = {
             // row 0
             {new Spot('w',0,0,"-="),new Spot('b',0,1,"-="),new Spot('w',0,2,"-="),new Spot('b',0,3,"-="),
-                    new Spot('w',0,4,"-="),new Spot('b',0,5,"-="),new Spot('w',0,6,"-="),new Spot('b',0,7,"-=")},
+             new Spot('w',0,4,"-="),new Spot('b',0,5,"-="),new Spot('w',0,6,"-="),new Spot('b',0,7,"-=")},
             // row 1
             {new Spot('b',1,0,"-="),new Spot('w',1,1,"-="),new Spot('b',1,2,"-="),new Spot('w',1,3,"-="),
-                    new Spot('b',1,4,"-="),new Spot('w',1,5,"-="),new Spot('b',1,6,"-="),new Spot('w',1,7,"-=")},
+             new Spot('b',1,4,"-="),new Spot('w',1,5,"-="),new Spot('b',1,6,"-="),new Spot('w',1,7,"-=")},
             // row 2
             {new Spot('w',2,0,"-="),new Spot('b',2,1,"-="),new Spot('w',2,2,"-="),new Spot('b',2,3,"-="),
-                    new Spot('w',2,4,"-="),new Spot('b',2,5,"-="),new Spot('w',2,6,"-="),new Spot('b',2,7,"-=")},
+             new Spot('w',2,4,"-="),new Spot('b',2,5,"-="),new Spot('w',2,6,"-="),new Spot('b',2,7,"-=")},
             // row 3
-            {new Spot('b',3,0,"-="),new Spot('w',3,1,"-="),new Spot('b',3,2,"-="),new Spot('w',3,3,"-="),
-                    new Spot('b',3,4,"-="),new Spot('w',3,5,"-="),new Spot('b',3,6,"-="),new Spot('w',3,7,"-=")},
+            {new Spot('b',3,0,"-="),new Spot('w',3,1,"-="),new Spot('b',3,2,"-="),new Spot('w',3,3,"wr"),
+             new Spot('b',3,4,"-="),new Spot('w',3,5,"-="),new Spot('b',3,6,"-="),new Spot('w',3,7,"-=")},
             // row 4
             {new Spot('w',4,0,"-="),new Spot('b',4,1,"-="),new Spot('w',4,2,"-="),new Spot('b',4,3,"-="),
-                    new Spot('w',4,4,"-="),new Spot('b',4,5,"-="),new Spot('w',4,6,"-="),new Spot('b',4,7,"-=")},
+             new Spot('w',4,4,"-="),new Spot('b',4,5,"-="),new Spot('w',4,6,"-="),new Spot('b',4,7,"-=")},
             // row 5
             {new Spot('b',5,0,"-="),new Spot('w',5,1,"-="),new Spot('b',5,2,"-="),new Spot('w',5,3,"-="),
-                    new Spot('b',5,4,"-="),new Spot('w',5,5,"-="),new Spot('b',5,6,"-="),new Spot('w',5,7,"-=")},
+             new Spot('b',5,4,"-="),new Spot('w',5,5,"-="),new Spot('b',5,6,"-="),new Spot('w',5,7,"-=")},
             // row 6
             {new Spot('w',6,0,"-="),new Spot('b',6,1,"-="),new Spot('w',6,2,"-="),new Spot('b',6,3,"-="),
-                    new Spot('w',6,4,"-="),new Spot('b',6,5,"-="),new Spot('w',6,6,"-="),new Spot('b',6,7,"-=")},
+             new Spot('w',6,4,"-="),new Spot('b',6,5,"-="),new Spot('w',6,6,"-="),new Spot('b',6,7,"-=")},
             // row 7
             {new Spot('b',7,0,"-="),new Spot('w',7,1,"-="),new Spot('b',7,2,"-="),new Spot('w',7,3,"-="),
-                    new Spot('b',7,4,"-="),new Spot('w',7,5,"-="),new Spot('b',7,6,"-="),new Spot('w',7,7,"-=")}
+             new Spot('b',7,4,"-="),new Spot('w',7,5,"-="),new Spot('b',7,6,"-="),new Spot('w',7,7,"-=")}
     };
 
     @Override
@@ -94,7 +94,8 @@ public class Chess extends Application {
     }
 
     public static void main(String[] args) {
-        System.out.println(board[7][6].findMoves(board));
+        System.out.println(debugBoard[3][3]);
+        System.out.println(debugBoard[3][3].findMoves(debugBoard));
         launch(args);
     }
 
@@ -224,7 +225,7 @@ class Spot {
         }
 
         // checks if rook will make check or queen in rook directions
-        for (int i = c+1;i < 8;i++) /* right */ {
+        for (int i = c+1;c+i < 8;i++) /* right */ {
             if (board[r][i].getTeam() == team) {
                 break;
             }
@@ -232,7 +233,7 @@ class Spot {
                 return true;
             }
         }
-        for (int i = r+1;i < 8;i++) /* down */ {
+        for (int i = r+1;r+i < 8;i++) /* down */ {
             if (board[i][c].getTeam() == team) {
                 break;
             }
@@ -240,7 +241,7 @@ class Spot {
                 return true;
             }
         }
-        for (int i = c-1;c > -1;i--) /* left */ {
+        for (int i = c-1;c-i > -1;i--) /* left */ {
             if (board[r][i].getTeam() == team) {
                 break;
             }
@@ -248,7 +249,7 @@ class Spot {
                 return true;
             }
         }
-        for (int i = r+1;i < 8;i++) /* up */ {
+        for (int i = r-1;r-i > 0;i--) /* up */ {
             if (board[i][c].getTeam() == team) {
                 break;
             }
@@ -423,7 +424,59 @@ class Spot {
             }
         }
 
+        // finds moves for rooks and queens in rook directions
+        if (piece == 'r' || piece == 'q') {
+            for (int i = c+1;c+i < 8;i++) /* right */ {
+                if (board[r][c+i].getTeam() == team) {
+                    break;
+                }
+                if (board[r][c+i].getTeam() == opp) {
+                    moves.add(new ArrayList<Integer>(Arrays.asList(r,c+i)));
+                    break;
+                }
+                if (board[r][c+i].getTeam() == '-') {
+                    moves.add(new ArrayList<Integer>(Arrays.asList(r,c+i)));
+                }
+            }
+            for (int i = r+1;r+i < 8;i++) /* down */ {
+                if (board[r+i][c].getTeam() == team) {
+                    break;
+                }
+                if (board[r+i][c].getTeam() == opp) {
+                    moves.add(new ArrayList<Integer>(Arrays.asList(r+i,c)));
+                    break;
+                }
+                if (board[r+i][c].getTeam() == '-') {
+                    moves.add(new ArrayList<Integer>(Arrays.asList(r+i,c)));
+                }
+            }
+            for (int i = c-1;c-i > -1;i--) /* left */ {
+                if (board[r][c-i].getTeam() == team) {
+                    break;
+                }
+                if (board[r][c-i].getTeam() == opp) {
+                    moves.add(new ArrayList<Integer>(Arrays.asList(r,c-i)));
+                    break;
+                }
+                if (board[r][c-i].getTeam() == '-') {
+                    moves.add(new ArrayList<Integer>(Arrays.asList(r,c-i)));
+                }
+            }
+            for (int i = r-1;r-i > -1;i--) /* up */ {
+                if (board[r-i][c].getTeam() == team) {
+                    break;
+                }
+                if (board[r-i][c].getTeam() == opp) {
+                    moves.add(new ArrayList<Integer>(Arrays.asList(r-i,c)));
+                    break;
+                }
+                if (board[r-i][c].getTeam() == '-') {
+                    moves.add(new ArrayList<Integer>(Arrays.asList(r-i,c)));
+                }
+            }
+        }
+
         return moves;
-    }
+    } // end of find moves function
 
 }
