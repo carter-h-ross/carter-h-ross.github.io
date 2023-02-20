@@ -1,0 +1,119 @@
+plugins {
+    id 'application'
+    id 'java'
+    id "de.undercouch.download" version "5.1.0"
+    id 'idea'
+    id "io.github.0ffz.github-packages" version "1.2.1" // Plugin for anonymous inclusion of artifacts hosted in github package registry
+}
+
+description = 'CarterCraft application'
+
+java {
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+}
+
+ext.jmonkeyengineVersion = '3.5.2-stable'
+
+mainClassName = 'dev.carterross.CarterCraft'
+if (!hasProperty('mainClass')) {
+    ext.mainClass = mainClassName
+}
+jar.manifest.attributes('Main-Class': mainClassName)
+
+repositories {
+    maven githubPackage.invoke("riccardobl/undefined")
+    maven { url "https://jitpack.io" }
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    // You can read more about how to add dependencies here:
+    //   https://docs.gradle.org/current/userguide/dependency_management.html#sec:how_to_declare_your_dependencies
+
+    implementation 'org.jmonkeyengine:jme3-core:' + jmonkeyengineVersion
+    runtimeOnly 'org.jmonkeyengine:jme3-jogg:' + jmonkeyengineVersion
+    runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jmonkeyengineVersion
+
+    implementation 'org.jmonkeyengine:jme3-networking:' + jmonkeyengineVersion
+    implementation 'org.jmonkeyengine:jme3-effects:' + jmonkeyengineVersion
+    runtimeOnly 'org.jmonkeyengine:jme3-lwjgl3:' + jmonkeyengineVersion
+
+    implementation 'wf.frk:jme-igui:0.1.2'
+    implementation 'com.rvandoosselaer:blocks:1.7.0'
+    implementation 'com.github.stephengold:Minie:7.2.0'
+}
+
+distZip {
+    //having a degenerate folder within the dist zip complicates generating the other zips
+    eachFile { file ->
+        String path = file.relativePath
+        file.setPath(path.substring(path.indexOf("/") + 1, path.length()))
+    }
+    includeEmptyDirs(false)
+}
+
+//See https://api.adoptium.net/v3/assets/feature_releases/11/ga?image_type=jre for jre urls
+def windowsJreUrl = "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.15%2B10/OpenJDK11U-jre_x64_windows_hotspot_11.0.15_10.zip"
+
+
+
+task downloadWindowsJre(type: Download) {
+    src windowsJreUrl
+    dest new File(buildDir, '/jres/windowsJre.zip')
+    overwrite false
+}
+
+task downloadAndUnzipWindowsJre(dependsOn: downloadWindowsJre, type: Copy) {
+    from zipTree(downloadWindowsJre.dest)
+    into "${buildDir}/jres/windowsJre/"
+    includeEmptyDirs(false)
+    filesMatching("**") {
+        it.path = it.path.replaceAll("^[a-zA-Z0-9.+-]*[/\\\\]", "jre/") //rename the top level to something standard so the rest of the script will be easier
+    }
+}
+
+task buildWindowsDistribution(dependsOn: [distZip, downloadAndUnzipWindowsJre], type: Copy)
+{
+    group 'distribution'
+    from files("${projectDir}/scripts/desktopDeployment/CarterCraft.bat"), zipTree(distZip.archiveFile), "${buildDir}/jres/windowsJre"
+    into new File(buildDir, 'distributions/CarterCraft-windows')
+    includeEmptyDirs false
+    exclude 'bin/**' //we are adding our own run scripts, exclude the ones coming from distZip
+}
+
+task zipWindowsDistribution( dependsOn:buildWindowsDistribution, type: Zip) {
+    group 'distribution'
+    archiveFileName = "CarterCraft-windows.zip"
+    destinationDirectory = file("$buildDir/distributions")
+    from "$buildDir/distributions/CarterCraft-windows"
+}
+
+
+task buildAllDistributions{
+    group 'distribution'
+    dependsOn 'zipWindowsDistribution'
+    
+}
+
+// cleanup tasks
+clean.dependsOn('cleanDLLs', 'cleanDyLibs', 'cleanLogs', 'cleanSOs')
+task cleanDLLs(type: Delete) {
+    delete fileTree(dir: '.', include: '*.dll')
+}
+task cleanDyLibs(type: Delete) {
+    delete fileTree(dir: '.', include: '*.dylib')
+}
+task cleanLogs(type: Delete) {
+    delete fileTree(dir: '.', include: 'hs_err_pid*.log')
+}
+task cleanSOs(type: Delete) {
+    delete fileTree(dir: '.', include: '*.so')
+}
+
+task fund(){
+    doLast {
+       java.awt.Desktop.desktop.browse "https://start.jmonkeyengine.org/#!funding=JME_DESKTOP,16283%2Fjme-igui,JME_NETWORKING,16130%2F1a85df6f-4bb6-4c85-9e77-b5119662ed54,JME_EFFECTS,MINIE".toURI()
+    }
+}
