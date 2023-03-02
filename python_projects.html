@@ -19,15 +19,18 @@
 
 <!------------------------------------------------------------------- nav bar --------------------------------------------------------------------------------->
 
-        <nav>
-            <a href = "./" id = "home_link">
+        <nav class = "nav">
+            <a href = "./" id = "home_link" class = "a">
                 Home Page
             </a>
-            <a href = "./python_projects" id = "python_projects_link">
+            <a href = "./python_projects" id = "python_projects_link" class = "a">
                 Python Projects
             </a>
-            <a href = "./java_projects" id = "java_projects_link">
+            <a href = "./java_projects" id = "java_projects_link" class = "a">
                 Java Projects
+            </a>
+            <a href = "./threejs_projects" id = "threejs_projects_link" class = "a">
+                Threejs Projects
             </a>
             <div class="animation start-home"></div>
         </nav>
@@ -471,7 +474,7 @@
                 border-radius: .8vw;
                 font-size: 0;
             }
-            nav a {
+            .nav .a {
                 line-height: 5vw;
                 height: 100%;
                 font-size: 1.5vw;
@@ -483,6 +486,7 @@
                 text-align: center;
                 color: white;
                 cursor: pointer;
+                width: calc( 100% / 4 );
             }
             nav .animation {
                 position: absolute;
@@ -492,29 +496,25 @@
                 transition: all .6s ease 0s;
                 border-radius: .8vw;
             }
-            a:nth-child(1) {
-                width: calc( 100% / 3 );
-            }
-            a:nth-child(2) {
-                width: calc( 100% / 3 );
-            }
-            a:nth-child(3) {
-                width: calc( 100% / 3 );
-            }
-            nav .start-home_link, a:nth-child(1):hover~.animation {
-                width: calc( 100% / 3 );
+            .nav .start-home_link, a:nth-child(1):hover~.animation {
+                width: calc( 100% / 4 );
                 left: 0%;
                 background-color: #c7d3ff;
             }
-            nav .start-python_projects_link, a:nth-child(2):hover~.animation {
-                width: calc( 100% / 3 );
-                left: calc( 100% / 3 );
+            .nav .start-python_projects_link, a:nth-child(2):hover~.animation {
+                width: calc( 100% / 4 );
+                left: calc( 100% / 4 );
                 background-color: #0670ae;
             }
-            nav .start-java_projects_link, a:nth-child(3):hover~.animation {
-                width: calc( 100% / 3 );
-                left: calc( (100% / 3) * 2 );
+            .nav .start-java_projects_link, a:nth-child(3):hover~.animation {
+                width: calc( 100% / 4 );
+                left: calc( (100% / 4) * 2 );
                 background-color: #ff9100;
+            }
+            .nav .start-threejs_projects_link, a:nth-child(4):hover~.animation {
+                width: calc( 100% / 4 );
+                left: calc( (100% / 4) * 3 );
+                background-color: #000155;
             }
         </style>
 
