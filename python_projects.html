@@ -39,7 +39,11 @@
         </nav>
 
 <!-------------------------------------------------------- images and download buttons html ------------------------------------------------------------------->
-            
+                    
+        <div id="instruction">
+            <h1>scroll down for more projects</h1>
+        </div>
+
         <div>    
 
             <div class = "scorllable-container parent" >
@@ -354,6 +358,10 @@
             }
 
             function reveal() {
+                if (started == true) {
+                    document.getElementById("instruction").style.display = "none";
+                }
+                started = true;
                 let reveals = document.querySelectorAll(".reveal");
                 for (let i = 0; i < reveals.length; i++) {
                     let windowHeight = window.innerHeight;
@@ -366,7 +374,8 @@
                     }
                 }
             }
-            
+
+            let started = false;
             window.addEventListener("scroll", reveal);
             window.addEventListener("resize", reveal);
             window.onload = (event) => {
@@ -401,6 +410,20 @@
             .div22 { grid-area: 8 / 1 / 9 / 2; }
             .div23 { grid-area: 8 / 2 / 9 / 3; }
             .div24 { grid-area: 8 / 3 / 9 / 4; }
+
+            #instruction {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 180vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0px;
+                z-index: 1;
+                color: #36595d;
+            }
             .parent {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);

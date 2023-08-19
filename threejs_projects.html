@@ -40,6 +40,10 @@
 
 <!-------------------------------------------------------- images and download buttons html ------------------------------------------------------------------->
             
+        <div id="instruction">
+            <h1>scroll down for more projects</h1>
+        </div>
+
         <div>    
 
             <div class = "scorllable-container parent" >
@@ -76,7 +80,7 @@
                     </h1>
                     <p>
                         This is a 3d block game similar to minecraft. the game currently only has spectator mode and alows 
-                        you to build using a list of commands and blocks found <a href="https://carterross.dev/blocks/manual">here</a>.
+                        you to build using a list of commands and blocks found <a href="https://carterross.dev/blocks/how-to-play">here</a>.
                     </p>
                 </div>
                 <div class = "reveal div5">
@@ -122,6 +126,10 @@
             }
 
             function reveal() {
+                if (started == true) {
+                    document.getElementById("instruction").style.display = "none";
+                }
+                started = true;
                 let reveals = document.querySelectorAll(".reveal");
                 for (let i = 0; i < reveals.length; i++) {
                     let windowHeight = window.innerHeight;
@@ -134,7 +142,8 @@
                     }
                 }
             }
-            
+
+            let started = false;
             window.addEventListener("scroll", reveal);
             window.addEventListener("resize", reveal);
             window.onload = (event) => {
@@ -166,6 +175,20 @@
             .div19 { grid-area: 7 / 1 / 8 / 2; }
             .div20 { grid-area: 7 / 2 / 8 / 3; }
             .div21 { grid-area: 7 / 3 / 8 / 4; } */
+
+            #instruction {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 160vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0px;
+                z-index: 1;
+                color: #333333;
+            }
             .parent {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
